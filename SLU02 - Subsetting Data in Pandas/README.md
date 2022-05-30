@@ -1,6 +1,7 @@
-# Small Learning Unit 2 - Subsetting data in Pandas
+# Small Learning Unit 2 - Subsetting data in  Pandas
 
 # New concepts in this unit
+
 - Setting pandas Dataframe index
 - Selecting columns (brackets and dot notation)
 - Selecting rows (loc and iloc)
@@ -11,8 +12,8 @@
 - Removing columns and rows
 - Adding columns and rows
 
-
 # New tools in this unit
+
 - [set_index](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.set_index.html)
 - [reset_index](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.reset_index.html)
 - [sort_index](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sort_index.html)
