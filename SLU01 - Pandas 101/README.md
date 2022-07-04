@@ -1,5 +1,6 @@
 # Small Learning Unit 1 - Pandas 101
 
+This is a test 
 
 # New concepts in this unit
 
@@ -12,11 +13,19 @@
 
 # New tools in this unit
 
-- [Series](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.html)
-- [DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)
-- [read_csv](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html)
-- [head](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.head.html)
-- [tail](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.tail.html)
-- [info](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.info.html)
-- [describe](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.describe.html)
-- [shape](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.shape.html)
+- [`pandas.Series`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html)
+- [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
+- [`pandas.Series.dtype`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.dtype.html)
+- [`pandas.Series.array()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.array.html)
+- [`pandas.Series.to_numpy()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.to_numpy.html)
+- [`pandas.DataFrame.index`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.index.html)
+- [`pandas.DataFrame.columns`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.columns.html)
+- [`pandas.DataFrame.dtypes`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dtypes.html)
+- [`pandas.DataFrame.convert_dtypes`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.convert_dtypes.html)
+- [`pandas.DataFrame.head()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.head.html)
+- [`pandas.DataFrame.tail()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.tail.html)
+- [`pandas.DataFrame.shape`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.shape.html)
+- [`pandas.DataFrame.info()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html)
+- [`pandas.DataFrame.describe()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html)
+- [`pandas.read_csv()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)
+- [`pandas.to_csv()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)
