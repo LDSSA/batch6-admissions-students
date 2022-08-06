@@ -1,91 +1,68 @@
 import numpy as np
 
 
-def test_exercise_2_part_I(read_movies):
-    movies_data = read_movies('movies_large.csv')
+def test_exercise_2_part_I(read_matches):
+    matches_data = read_matches('champions_league_15_16_large.csv')
     
-    assert isinstance(movies_data, dict)
-    assert len(movies_data) == 200
+    assert isinstance(matches_data, list)
+    assert all(isinstance(match_data, dict) for match_data in matches_data)
+    assert len(matches_data) == 125
 
-    assert 'tt1375666' in movies_data
-    inception = movies_data['tt1375666']
-    assert inception["title"] == "Inception"
-    assert inception["year"] == 2010
-    np.testing.assert_almost_equal(inception["rating"], 8.8, decimal=1)
+    match_data = matches_data[73]
+    assert match_data["stage"] == "Group"
+    assert match_data["date"] == "25 Nov 2015"
+    assert match_data["team_1"] == "Shakhtar Donetsk"
+    assert match_data["team_2"] == "Real Madrid CF"
+    assert match_data["ft"] == "3-4"
     
-    assert 'tt0078748' in movies_data
-    alien = movies_data['tt0078748']
-    assert alien["title"] == "Alien"
-    assert alien["year"] == 1979
-    np.testing.assert_almost_equal(alien["rating"], 8.5, decimal=1)
-
-
-def test_exercise_2_part_II(average_movie_rating):
-    movies_data = {
-        "tt0071411": {"title": "Dersu Uzala", "year": 1975, "rating": 8.2},
-        "tt0118799": {"title": "Life Is Beautiful", "year": 1997, "rating": 8.6},
-        "tt0252487": {"title": "The Chaos Class", "year": 1975, "rating": 9.3},
-        "tt0381681": {"title": "Before Sunset", "year": 2004, "rating": 8.1},
-        "tt0466460": {"title": "Khosla Ka Ghosla!", "year": 2006, "rating": 8.3},
-        "tt0075148": {"title": "Rocky", "year": 1976, "rating": 8.1},
-        "tt0263975": {"title": "The Girl with the Red Scarf", "year": 1977, "rating": 8.5},
-        "tt0109830": {"title": "Forrest Gump", "year": 1994, "rating": 8.8},
-        "tt1954470": {"title": "Gangs of Wasseypur", "year": 2012, "rating": 8.2},
-        "tt0074958": {"title": "Network", "year": 1976, "rating": 8.1},
-        "tt0363163": {"title": "Downfall", "year": 2004, "rating": 8.2},
-        "tt0347149": {"title": "Howl's Moving Castle", "year": 2004, "rating": 8.2},
-        "tt2375605": {"title": "The Act of Killing", "year": 2012, "rating": 8.2},
-        "tt0091763": {"title": "Platoon", "year": 1986, "rating": 8.1},
-        "tt0114787": {"title": "Underground", "year": 1995, "rating": 8.1},
-        "tt0214915": {"title": "Manichithrathazhu", "year": 1993, "rating": 8.7},
-        "tt6966692": {"title": "Green Book", "year": 2018, "rating": 8.2},
-        "tt3322420": {"title": "Queen", "year": 2013, "rating": 8.1},
-        "tt6316138": {"title": "Ayla: The Daughter of War", "year": 2017, "rating": 8.3},
-        "tt0468569": {"title": "The Dark Knight", "year": 2008, "rating": 9.0},
-    }
-                      
-    average_movie_rating_1976 = average_movie_rating(movies_data, 1976)
-    assert isinstance(average_movie_rating_1976, float)  
-    np.testing.assert_almost_equal(average_movie_rating_1976, 8.1, decimal=2)
-    
-    average_movie_rating_2004 = average_movie_rating(movies_data, 2004)
-    assert isinstance(average_movie_rating_2004, float)  
-    np.testing.assert_almost_equal(average_movie_rating_2004, 8.1666, decimal=2)
-    
-    average_movie_rating_2005 = average_movie_rating(movies_data, 2005)
-    assert isinstance(average_movie_rating_2005, float)  
-    np.testing.assert_almost_equal(average_movie_rating_2005, -1, decimal=2)
-    
-    average_movie_rating_2023 = average_movie_rating(movies_data, 2023)
-    assert isinstance(average_movie_rating_2023, float)  
-    np.testing.assert_almost_equal(average_movie_rating_2023, -1, decimal=2)
+    match_data = matches_data[102]
+    assert match_data["stage"] == "Knockout"
+    assert match_data["date"] == "24 Feb 2016"
+    assert match_data["team_1"] == "PSV Eindhoven"
+    assert match_data["team_2"] == "Atletico Madrid"
+    assert match_data["ft"] == "0-0"
 
 
-def test_exercise_2_part_III(pearson_correlation_year_rating):
+def test_exercise_2_part_II_a(get_goals_from_ft):
+    matches_data = [
+        {"stage": "Group", "date": "24 Nov 2015", "team_1": "BATE Borisov", "team_2": "Bayer 04 Leverkusen", "ft": "1-1"},
+        {"stage": "Group", "date": "24 Nov 2015", "team_1": "FC Barcelona", "team_2": "AS Roma", "ft": "6-1"},
+        {"stage": "Group", "date": "24 Nov 2015", "team_1": "Arsenal FC", "team_2": "Dinamo Zagreb", "ft": "3-0"},
+        {"stage": "Group", "date": "24 Nov 2015", "team_1": "Bayern München", "team_2": "Olympiacos", "ft": "4-0"},
+        {"stage": "Group", "date": "24 Nov 2015", "team_1": "FC Porto", "team_2": "Dinamo Kiev", "ft": "0-2"},
+        {"stage": "Group", "date": "24 Nov 2015", "team_1": "Maccabi Tel Aviv", "team_2": "Chelsea FC", "ft": "0-4"},
+        {"stage": "Group", "date": "24 Nov 2015", "team_1": "Olympique Lyon", "team_2": "KAA Gent", "ft": "1-2"},
+        {"stage": "Group", "date": "24 Nov 2015", "team_1": "Zenit St. Petersburg", "team_2": "Valencia CF", "ft": "2-0"},
+        {"stage": "Group", "date": "25 Nov 2015", "team_1": "Malmo FF", "team_2": "Paris Saint-Germain", "ft": "0-5"},
+        {"stage": "Group", "date": "25 Nov 2015", "team_1": "Shakhtar Donetsk", "team_2": "Real Madrid CF", "ft": "3-4"},
+        {"stage": "Group", "date": "25 Nov 2015", "team_1": "CSKA Moskva", "team_2": "VfL Wolfsburg", "ft": "0-2"},
+        {"stage": "Group", "date": "25 Nov 2015", "team_1": "Manchester United FC", "team_2": "PSV Eindhoven", "ft": "0-0"},
+        {"stage": "Group", "date": "25 Nov 2015", "team_1": "Astana", "team_2": "SL Benfica", "ft": "2-2"},
+        {"stage": "Group", "date": "25 Nov 2015", "team_1": "Atletico Madrid", "team_2": "Galatasaray İstanbul AŞ", "ft": "2-0"},
+        {"stage": "Group", "date": "25 Nov 2015", "team_1": "Juventus", "team_2": "Manchester City FC", "ft": "1-0"},
+        {"stage": "Group", "date": "25 Nov 2015", "team_1": "Borussia Monchengladbach", "team_2": "Sevilla FC", "ft": "4-2"},
+    ]
     
-    movies_data = {
-        "tt0071411": {"title": "Dersu Uzala", "year": 1975, "rating": 8.2},
-        "tt0118799": {"title": "Life Is Beautiful", "year": 1997, "rating": 8.6},
-        "tt0252487": {"title": "The Chaos Class", "year": 1975, "rating": 9.3},
-        "tt0381681": {"title": "Before Sunset", "year": 2004, "rating": 8.1},
-        "tt0466460": {"title": "Khosla Ka Ghosla!", "year": 2006, "rating": 8.3},
-        "tt0075148": {"title": "Rocky", "year": 1976, "rating": 8.1},
-        "tt0263975": {"title": "The Girl with the Red Scarf", "year": 1977, "rating": 8.5},
-        "tt0109830": {"title": "Forrest Gump", "year": 1994, "rating": 8.8},
-        "tt1954470": {"title": "Gangs of Wasseypur", "year": 2012, "rating": 8.2},
-        "tt0074958": {"title": "Network", "year": 1976, "rating": 8.1},
-        "tt0363163": {"title": "Downfall", "year": 2004, "rating": 8.2},
-        "tt0347149": {"title": "Howl's Moving Castle", "year": 2004, "rating": 8.2},
-        "tt2375605": {"title": "The Act of Killing", "year": 2012, "rating": 8.2},
-        "tt0091763": {"title": "Platoon", "year": 1986, "rating": 8.1},
-        "tt0114787": {"title": "Underground", "year": 1995, "rating": 8.1},
-        "tt0214915": {"title": "Manichithrathazhu", "year": 1993, "rating": 8.7},
-        "tt6966692": {"title": "Green Book", "year": 2018, "rating": 8.2},
-        "tt3322420": {"title": "Queen", "year": 2013, "rating": 8.1},
-        "tt6316138": {"title": "Ayla: The Daughter of War", "year": 2017, "rating": 8.3},
-        "tt0468569": {"title": "The Dark Knight", "year": 2008, "rating": 9.0},
-    }
+    matches_goals = get_goals_from_ft(matches_data)
+    assert isinstance(matches_goals, list)
+    assert all(isinstance(match_goals, int) for match_goals in matches_goals)
+    assert len(matches_goals) == len(matches_data)
+    assert matches_goals[3] == 4
+    assert matches_goals[5] == 4
+    assert matches_goals[9] == 7
+    assert matches_goals[11] == 0
+    assert matches_goals[14] == 1
     
-    pearson_correlation = pearson_correlation_year_rating(movies_data)
-    assert isinstance(pearson_correlation, float)
-    np.testing.assert_almost_equal(pearson_correlation, -0.197, decimal=3)
+
+def test_exercise_2_part_II_b(get_goals_stats):
+    goals_list = [2, 7, 3, 4, 2, 4, 3, 2, 5, 7, 2, 0, 4, 2, 1, 6]
+    
+    goals_stats = get_goals_stats(goals_list)
+    assert isinstance(goals_stats, tuple)
+    assert len(goals_stats) == 2
+    
+    goals_average, goals_mode = goals_stats
+    assert isinstance(goals_average, float)
+    assert isinstance(goals_mode, int)
+    np.testing.assert_almost_equal(goals_average, 3.4, decimal=1)
+    assert goals_mode == 2
